@@ -1,0 +1,67 @@
+ext.versions = [
+        minSdk             : 21,
+        compileSdk         : 33,
+        targetSdk          : 33,
+        buildTools         : '33.0.0',
+        androidGradlePlugin: '7.3.0',
+
+        room               : '2.4.3',
+        lifecycle          : '2.5.1',
+        navigation         : '2.5.3',
+        hilt               : '2.44',
+        glide              : '4.14.2',
+        okHttp             : '4.10.0',
+        retrofit           : '2.9.0'
+]
+
+ext.libraries = [
+        appCompat              : "androidx.appcompat:appcompat:1.6.0",
+        material               : "com.google.android.material:material:1.8.0",
+        constraint             : "androidx.constraintlayout:constraintlayout:2.1.4",
+        splashScreen           : "androidx.core:core-splashscreen:1.0.0",
+        recyclerView           : 'androidx.recyclerview:recyclerview:1.2.1',
+
+        liveData               : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
+        lifecycleViewModel     : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+        lifecycleRuntime       : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
+        lifecycleCommon        : "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle",
+        lifecycleProcess       : "androidx.lifecycle:lifecycle-process:$versions.lifecycle",
+
+        navigationFragment     : "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+        navigationUI           : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+        navigationRuntime      : "androidx.navigation:navigation-runtime-ktx:$versions.navigation",
+
+        hilt                   : "com.google.dagger:hilt-android:$versions.hilt",
+        hiltCompiler           : "com.google.dagger:hilt-android-compiler:$versions.hilt",
+        hiltFragment           : "androidx.hilt:hilt-navigation-fragment:1.0.0",
+
+        glide                  : "com.github.bumptech.glide:glide:$versions.glide",
+        glideCompiler          : "com.github.bumptech.glide:compiler:$versions.glide",
+        glideIntegration       : "com.github.bumptech.glide:okhttp3-integration:$versions.glide",
+
+        okHttp                 : "com.squareup.okhttp3:okhttp:$versions.okHttp",
+        okHttpInterceptor      : "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+
+        retrofit               : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitScalars        : "com.squareup.retrofit2:converter-scalars:$versions.retrofit",
+        retrofitRx             : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+        retrofitGson           : 'com.squareup.retrofit2:converter-gson:2.3.0',
+
+        kotlinSerilization     : 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1',
+        retrofitConverterKotlin: 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0',
+
+        core                   : "androidx.core:core-ktx:1.9.0",
+        coreActivity           : 'androidx.activity:activity-ktx:1.6.1',
+        coreFragment           : 'androidx.fragment:fragment-ktx:1.5.5',
+
+        coroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4",
+        coroutinesCore         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
+
+        viewBinding            : "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6",
+        datastorePreferences     : 'androidx.datastore:datastore-preferences:1.0.0',
+
+        roomRuntime              : "androidx.room:room-runtime:$versions.room",
+        roomRxJava2              : "androidx.room:room-rxjava2:$versions.room",
+        roomCompiler             : "androidx.room:room-compiler:$versions.room",
+        roomCoroutines           : "androidx.room:room-ktx:$versions.room",
+]

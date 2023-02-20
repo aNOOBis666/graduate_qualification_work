@@ -1,0 +1,27 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: "$rootDir/android.gradle"
+apply from: "$rootDir/common.gradle"
+
+android {
+    hilt {
+        enableAggregatingTask = true
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation libraries.hilt
+    implementation libraries.lifecycleProcess
+    kapt libraries.hiltCompiler
+    implementation libraries.hiltFragment
+}

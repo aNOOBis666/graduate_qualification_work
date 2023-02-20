@@ -1,0 +1,11 @@
+dependencies {
+    implementation libraries.core
+    implementation libraries.coreActivity
+    implementation libraries.coreFragment
+
+    implementation libraries.appCompat
+    implementation libraries.material
+    implementation libraries.recyclerView
+
+    implementation libraries.splashScreen
+}

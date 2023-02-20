@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.plugin.parcelize'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+apply from: "$rootDir/android.gradle"
+apply from: "$rootDir/common.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.codehunters.glucosereader"
+    }
+    hilt {
+        enableAggregatingTask = true
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+    }
+}
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        substitute module('com.intellij:annotations:12.0') using module('org.jetbrains:annotations:13.0')
+    }
+}
+
+dependencies {
+    implementation project(':local_storage')
+    implementation project(':data')
+    implementation project(':presenter')
+    implementation project(':repository')
+    implementation project(':utils')
+
+    implementation libraries.okHttp
+    implementation libraries.okHttpInterceptor
+
+    implementation libraries.lifecycleViewModel
+    implementation libraries.lifecycleRuntime
+    implementation libraries.lifecycleCommon
+    implementation libraries.lifecycleProcess
+
+    implementation libraries.navigationFragment
+    implementation libraries.navigationUI
+    implementation libraries.navigationRuntime
+
+    implementation libraries.hilt
+    implementation libraries.lifecycleProcess
+    kapt libraries.hiltCompiler
+    implementation libraries.hiltFragment
+
+    implementation libraries.viewBinding
+    implementation libraries.kotlinSerilization
+    implementation libraries.retrofitConverterKotlin
+}
