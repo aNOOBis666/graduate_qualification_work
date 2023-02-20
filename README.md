@@ -1,5 +1,7 @@
 # Glucose reader
 
+## Status: `In progress`
+
 ## Stack:
 ```
 * Kotlin
