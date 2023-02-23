@@ -21,7 +21,6 @@ android {
 
 dependencies {
     implementation libraries.roomRuntime
-    implementation libraries.roomRxJava2
     implementation libraries.roomCompiler
     implementation libraries.roomCoroutines
     implementation libraries.datastorePreferences

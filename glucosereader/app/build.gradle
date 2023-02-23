@@ -59,4 +59,8 @@ dependencies {
     implementation libraries.viewBinding
     implementation libraries.kotlinSerilization
     implementation libraries.retrofitConverterKotlin
+
+    implementation libraries.roomRuntime
+    implementation libraries.roomCompiler
+    implementation libraries.roomCoroutines
 }
