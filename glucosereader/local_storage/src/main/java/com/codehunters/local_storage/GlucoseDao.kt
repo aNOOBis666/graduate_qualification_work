@@ -15,7 +15,7 @@ interface GlucoseDao {
     suspend fun addList(items: List<GlucoseEntity>)
 
     @Query("delete from glucose where _id=:id")
-    suspend fun deleteById(id: String, type: String)
+    suspend fun deleteById(id: String)
 
     @Query("select * from glucose")
     suspend fun getAll(): List<GlucoseEntity>

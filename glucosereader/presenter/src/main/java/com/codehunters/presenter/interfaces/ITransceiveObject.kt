@@ -1,4 +1,4 @@
-package com.codehunters.presenter
+package com.codehunters.presenter.interfaces
 
 interface ITransceiveObject {
     companion object {

@@ -3,6 +3,8 @@ package com.codehunters.glucosereader.module
 import android.content.Context
 import androidx.room.Room
 import com.codehunters.local_storage.GlucoseDatabase
+import com.codehunters.local_storage.GlucoseInterface
+import com.codehunters.local_storage.interfaces.IGlucoseInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,4 +30,10 @@ class LocalStorageModule {
             .fallbackToDestructiveMigration()
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun providesGlucoseInterface(
+        db: GlucoseDatabase
+    ): IGlucoseInterface = GlucoseInterface(db)
 }

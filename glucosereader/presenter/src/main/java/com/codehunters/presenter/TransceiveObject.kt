@@ -1,6 +1,7 @@
 package com.codehunters.presenter
 
-import com.codehunters.presenter.ITransceiveObject.Companion.DEFAULT_BLOCK_SIZE
+import com.codehunters.presenter.interfaces.ITransceiveObject
+import com.codehunters.presenter.interfaces.ITransceiveObject.Companion.DEFAULT_BLOCK_SIZE
 
 class TransceiveObject: ITransceiveObject {
     override fun getData(): List<ByteArray> {
