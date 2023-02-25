@@ -61,6 +61,6 @@ dependencies {
     implementation libraries.retrofitConverterKotlin
 
     implementation libraries.roomRuntime
-    implementation libraries.roomCompiler
+    kapt libraries.roomCompiler
     implementation libraries.roomCoroutines
 }
