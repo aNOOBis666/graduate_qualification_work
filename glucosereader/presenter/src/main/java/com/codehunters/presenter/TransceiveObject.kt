@@ -20,12 +20,15 @@ class TransceiveObject : ITransceiveObject {
     }
 
     override fun bytesToHex(bytes: ByteArray): String {
-        val hexChars = CharArray(bytes.size * 2)
-        for (j in bytes.indices) {
-            val v: Int = bytes[j].and(0xFF.toByte()).toInt()
-            hexChars[j * 2] = HEX_ARRAY[v ushr 4]
-            hexChars[j * 2 + 1] = HEX_ARRAY[v and 0x0F]
-        }
-        return String(hexChars)
+//        val hexChars = CharArray(bytes.size * 2)
+//        for (j in bytes.indices) {
+//            val v: Int = (bytes[j] and 0xFF.toByte()).toInt()
+//            hexChars[j * 2] = HEX_ARRAY[v ushr 4]
+//            hexChars[j * 2 + 1] = HEX_ARRAY[v and 0x0F]
+//        }
+//        return String(hexChars)
+        return bytes.toHexString()
     }
+
+    private fun ByteArray.toHexString() = this.joinToString(separator = "") { "%02X".format(it) }
 }

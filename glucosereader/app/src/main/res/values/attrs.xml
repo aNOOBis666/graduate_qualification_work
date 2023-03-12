@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GraphicView">
+        <attr name="dashedLines" format="integer" />
+        <attr name="dashedLinesDelta" format="integer" />
+        <attr name="accent_line_color" format="color" />
+        <attr name="accent_line_width" format="float" />
+    </declare-styleable>
+</resources>
