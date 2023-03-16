@@ -16,6 +16,7 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         private const val START_X = 82F
 
         private const val DEFAULT_STROKE_WIDTH = 2F
+        private const val POINT_RADIUS = 50F
         private const val DEFAULT_ACCENT_LINE_COLOR = Color.BLUE
         private const val DEFAULT_LINES_COLOR = Color.BLACK
         private const val DEFAULT_VALUES_DELTA = 3
@@ -29,9 +30,15 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
             0, 0
         ).apply {
             dashedLines = getInteger(R.styleable.GraphicView_dashedLines, DEFAULT_LINES_COUNT)
-            dashedLinesDelta = getInteger(R.styleable.GraphicView_dashedLinesDelta, DEFAULT_VALUES_DELTA)
-            accentLineColor = getColor(R.styleable.GraphicView_accent_line_color, DEFAULT_ACCENT_LINE_COLOR)
-            accentLineWidth = getFloat(R.styleable.GraphicView_accent_line_width, DEFAULT_STROKE_WIDTH)
+            dashedLinesDelta = getInteger(
+                R.styleable.GraphicView_dashedLinesDelta, DEFAULT_VALUES_DELTA
+            )
+            accentLineColor = getColor(
+                R.styleable.GraphicView_accent_line_color, DEFAULT_ACCENT_LINE_COLOR
+            )
+            accentLineWidth = getFloat(
+                R.styleable.GraphicView_accent_line_width, DEFAULT_STROKE_WIDTH
+            )
         }
     }
 
@@ -40,6 +47,7 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         itemsList = items
         this.invalidate()
     }
+
     fun getItemsList() = itemsList
 
     private val paintBackground = Paint()
@@ -91,12 +99,12 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         lineWidth: Float = DEFAULT_STROKE_WIDTH,
         lineColor: Int = DEFAULT_LINES_COLOR
     ) = Paint().apply {
-            strokeWidth = lineWidth
-            isAntiAlias = true
-            color = lineColor
-            style = Paint.Style.STROKE
-            if (isDashed) pathEffect = DashPathEffect(floatArrayOf(10f, 8f), 0f)
-        }
+        strokeWidth = lineWidth
+        isAntiAlias = true
+        color = lineColor
+        style = Paint.Style.STROKE
+        if (isDashed) pathEffect = DashPathEffect(floatArrayOf(10f, 8f), 0f)
+    }
 
     private fun drawHorizontalGuidelines(canvas: Canvas?) {
         val linePos = LinePosition(
@@ -138,7 +146,7 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     }
 
     private fun drawGraph(canvas: Canvas?) {
-        val itemWidth = width.toFloat() / (itemsList.size - 1)
+        val itemWidth = (width.toFloat() - START_X) / (itemsList.size - 1)
         var previousPos: LinePosition? = null
         itemsList.map {
             val currentLine = LinePosition(
@@ -148,9 +156,26 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                 endY = it.value.toYPos()
             )
             setAxis(canvas, paintDiagAxis, graphLine, currentLine)
+//            setEndPoint(currentLine)
             previousPos = currentLine
         }
     }
+
+//    private fun setEndPoint(currentLine: LinePosition) {
+//
+//        View(context).apply {
+//            draw (Canvas().apply {
+//                drawCircle(
+//                    currentLine.endX,
+//                    currentLine.endY,
+//                    POINT_RADIUS,
+//                    graphLine
+//                )
+//            })
+//        }.setOnClickListener {
+//
+//        }
+//    }
 
     private fun Float.toYPos(): Float {
         val itemHeight = height.toFloat() / dashedLines
