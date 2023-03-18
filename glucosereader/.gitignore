@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/build 2
+/.idea
