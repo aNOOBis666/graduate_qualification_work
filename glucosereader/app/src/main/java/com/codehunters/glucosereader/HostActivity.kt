@@ -19,7 +19,7 @@ class HostActivity : AppCompatActivity(R.layout.ac_host) {
         super.onCreate(savedInstanceState)
         intent.parcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)?.let { tag ->
             val receivedInfo = viewModel.getNfcData(tag)
-            Toast.makeText(this, receivedInfo.toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, ((receivedInfo?.second?.value ?: 0) *0.00567).toString(), Toast.LENGTH_LONG).show()
         }
     }
 }
