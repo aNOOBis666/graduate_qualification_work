@@ -2,6 +2,8 @@ package com.codehunters.glucosereader.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import com.codehunters.data.models.GlucoseData
 import com.codehunters.presenter.interfaces.IGlucosePresenter
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,8 +25,12 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<List<GlucoseData>>(emptyList())
     val uiState = _uiState.asStateFlow()
 
+    private val _isNotificationState = MutableStateFlow(false)
+    val isNotificationState = _isNotificationState.asStateFlow()
+
     init {
         renderGlucose()
+        isSelectedNotification()
     }
 
     private fun renderGlucose() {
@@ -45,6 +51,19 @@ class HomeViewModel @Inject constructor(
                     System.currentTimeMillis()
                 )
             )
+        }
+    }
+
+    fun isSelectedNotification() {
+        viewModelScope.launch(Dispatchers.IO) {
+//            subscribe flow
+            _isNotificationState.value
+        }
+    }
+
+    fun addOrDeleteNotification() {
+        viewModelScope.launch(Dispatchers.IO) {
+
         }
     }
 }

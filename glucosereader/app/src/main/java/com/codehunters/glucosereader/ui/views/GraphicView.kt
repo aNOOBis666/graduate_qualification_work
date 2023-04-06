@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.codehunters.data.models.GlucoseData
 import com.codehunters.data.models.LinePosition
 import com.codehunters.glucosereader.R
@@ -18,7 +19,6 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         private const val DEFAULT_STROKE_WIDTH = 2F
         private const val POINT_RADIUS = 50F
         private const val DEFAULT_ACCENT_LINE_COLOR = Color.BLUE
-        private const val DEFAULT_LINES_COLOR = Color.BLACK
         private const val DEFAULT_VALUES_DELTA = 3
         private const val DEFAULT_LINES_COUNT = 8
     }
@@ -82,7 +82,7 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     private fun drawBackground(canvas: Canvas?) {
         paintBackground.apply {
             style = Paint.Style.FILL
-            color = Color.WHITE
+            color = Color.TRANSPARENT
         }
         canvas?.drawPaint(paintBackground)
     }
@@ -90,14 +90,14 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     private fun setTextStyle() {
         textPaint.apply {
             textSize = context.resources.getDimension(R.dimen.graphic_text_size)
-            color = Color.BLACK
+            color = ContextCompat.getColor(context, R.color.black)
         }
     }
 
     private fun drawGuideline(
         isDashed: Boolean = false,
         lineWidth: Float = DEFAULT_STROKE_WIDTH,
-        lineColor: Int = DEFAULT_LINES_COLOR
+        lineColor: Int = ContextCompat.getColor(context, R.color.black)
     ) = Paint().apply {
         strokeWidth = lineWidth
         isAntiAlias = true
@@ -107,14 +107,11 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     }
 
     private fun drawHorizontalGuidelines(canvas: Canvas?) {
-        val linePos = LinePosition(
-            startX = GRAPH_START_X,
-            endX = width.toFloat(),
-            startY = height.toFloat() - GRAPH_START_X,
-            endY = height.toFloat() - GRAPH_START_X
-        )
-        setAxis(canvas, paintAxisX, guidelinePaint, linePos)
+        drawXAxis(canvas)
+        drawGridLines(canvas)
+    }
 
+    private fun drawGridLines(canvas: Canvas?) {
         for (i in 1 until dashedLines) {
             val yPos: Float = (i * height.toFloat() / (dashedLines))
 
@@ -130,11 +127,21 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                 startY = yPos,
                 endY = yPos
             )
-            setAxis(canvas, paintAxisY, guideDashPaint, gridLine)
+            drawLine(canvas, paintAxisY, guideDashPaint, gridLine)
         }
     }
 
-    private fun setAxis(canvas: Canvas?, path: Path, paint: Paint, linePos: LinePosition) {
+    private fun drawXAxis(canvas: Canvas?) {
+        val linePos = LinePosition(
+            startX = GRAPH_START_X,
+            endX = width.toFloat(),
+            startY = height.toFloat() - GRAPH_START_X,
+            endY = height.toFloat() - GRAPH_START_X
+        )
+        drawLine(canvas, paintAxisX, guidelinePaint, linePos)
+    }
+
+    private fun drawLine(canvas: Canvas?, path: Path, paint: Paint, linePos: LinePosition) {
         canvas?.drawPath(
             path.apply {
                 reset()
@@ -152,11 +159,10 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
             val currentLine = LinePosition(
                 startX = previousPos?.endX ?: START_X,
                 endX = previousPos?.endX?.plus(itemWidth) ?: START_X,
-                startY = previousPos?.endY ?: it.value.toYPos(),
-                endY = it.value.toYPos()
+                startY = previousPos?.endY ?: it.value.glucoseToYPos(),
+                endY = it.value.glucoseToYPos()
             )
-            setAxis(canvas, paintDiagAxis, graphLine, currentLine)
-//            setEndPoint(currentLine)
+            drawLine(canvas, paintDiagAxis, graphLine, currentLine)
             previousPos = currentLine
         }
     }
@@ -177,7 +183,7 @@ class GraphicView(context: Context, attrs: AttributeSet?) : View(context, attrs)
 //        }
 //    }
 
-    private fun Float.toYPos(): Float {
+    private fun Float.glucoseToYPos(): Float {
         val itemHeight = height.toFloat() / dashedLines
         val numOfItems = this / dashedLinesDelta
         return height - (numOfItems * itemHeight)

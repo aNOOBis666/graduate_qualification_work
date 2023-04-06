@@ -10,4 +10,8 @@
         android:name="com.codehunters.glucosereader.ui.main.HomeFragment"
         tools:layout="@layout/fragment_home" />
 
+    <dialog android:id="@+id/notification_destination"
+        android:name="com.codehunters.glucosereader.ui.notification.NotificationDialogFragment"
+        tools:layout="@layout/dlg_notification"/>
+
 </navigation>

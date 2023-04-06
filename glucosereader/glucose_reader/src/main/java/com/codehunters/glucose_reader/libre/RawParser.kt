@@ -1,6 +1,4 @@
-package com.codehunters.presenter
-
-import android.util.Log
+package com.codehunters.glucose_reader.libre
 
 class RawParser {
     companion object {
@@ -33,7 +31,6 @@ class RawParser {
                     .plus(data.sliceArray(IntRange(startH, startH + iH * 6 - 1)))
                 chunk(flatHistory, true)
             }catch(e:Exception) {
-                Log.e("RAW_PARSER", e.toString())
                 listOf()
             }
         }
@@ -46,7 +43,6 @@ class RawParser {
                     .plus(data.sliceArray(IntRange(startR, startR + iR*6 - 1)))
                 chunk(flatRecent, false)
             }catch(e:Exception) {
-                Log.e("RAWPARSER", e.toString())
                 listOf()
             }
         }

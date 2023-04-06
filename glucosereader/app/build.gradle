@@ -33,6 +33,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':glucose_reader')
     implementation project(':local_storage')
     implementation project(':data')
     implementation project(':presenter')

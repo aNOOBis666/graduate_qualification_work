@@ -14,14 +14,8 @@ android {
     hilt {
         enableAggregatingTask = true
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
-
 dependencies {
-    implementation project(':glucose_reader')
-
     implementation libraries.hilt
     implementation libraries.lifecycleProcess
     kapt libraries.hiltCompiler

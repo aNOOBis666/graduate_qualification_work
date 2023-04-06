@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">glucosereader</string>
+
+    <string name="error_reading_glucose">Не удалось считать значение. Попробуйте удерживать телефон у датчика дольше.</string>
+    <string name="error_empty_glucose">Значения не найдены</string>
+
+    <string name="button_add_value">Добавить значение</string>
+
+    <string name="dlg_notification_title">Установка напоминаний</string>
+    <string name="dlg_notification_description">Выберите интервал отправки уведомлений. Значения указаны в минутах.</string>
+    <string name="dlg_notification_progress_start">0</string>
+    <string name="dlg_notification_progress_end">480</string>
+    <string name="dlg_notification_submit">Установить</string>
+    <string name="dlg_notification_cancel">Отменить</string>
+
 </resources>

@@ -1,7 +1,6 @@
-package com.codehunters.presenter
+package com.codehunters.glucose_reader.utils
 
-
-class Time {
+class TimeUtils {
     companion object {
         const val SECOND = 1000L
         const val MINUTE = 60L * SECOND
