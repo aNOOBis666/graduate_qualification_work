@@ -1,8 +1,11 @@
 package com.codehunters.glucosereader.module
 
 import com.codehunters.local_storage.interfaces.IGlucoseInterface
+import com.codehunters.local_storage.interfaces.ISharedPreferencesManager
 import com.codehunters.repository.GlucoseRepository
+import com.codehunters.repository.NotificationRepository
 import com.codehunters.repository.interfaces.IGlucoseRepository
+import com.codehunters.repository.interfaces.INotificationRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +17,13 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Provides
     @Singleton
-    fun provideGlucoseRepository(
+    fun providesGlucoseRepository(
         glucoseInterface: IGlucoseInterface
     ): IGlucoseRepository = GlucoseRepository(glucoseInterface)
+
+    @Provides
+    @Singleton
+    fun providesNotificationRepository(
+        sharedPreferencesManager: ISharedPreferencesManager
+    ): INotificationRepository = NotificationRepository(sharedPreferencesManager)
 }

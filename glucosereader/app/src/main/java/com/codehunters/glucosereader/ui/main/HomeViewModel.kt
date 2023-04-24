@@ -2,10 +2,11 @@ package com.codehunters.glucosereader.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavDirections
-import androidx.navigation.Navigation
 import com.codehunters.data.models.GlucoseData
+import com.codehunters.glucosereader.ui.navigation.INavigation
 import com.codehunters.presenter.interfaces.IGlucosePresenter
+import com.codehunters.presenter.interfaces.INotificationPresenter
+import com.codehunters.presenter.interfaces.INotificationPresenter.Companion.EMPTY_NOTIFICATION
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +16,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val glucosePresenter: IGlucosePresenter
+    private val glucosePresenter: IGlucosePresenter,
+    private val notificationPresenter: INotificationPresenter,
+    private val navigation: INavigation
 ) : ViewModel() {
 
     companion object {
@@ -54,16 +57,26 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun isSelectedNotification() {
+    private fun isSelectedNotification() {
         viewModelScope.launch(Dispatchers.IO) {
-//            subscribe flow
-            _isNotificationState.value
+            notificationPresenter.isNotificationFlow.collect {
+                _isNotificationState.value = it
+            }
         }
     }
 
     fun addOrDeleteNotification() {
         viewModelScope.launch(Dispatchers.IO) {
+            if (isNotificationState.value) notificationPresenter.setNotificationInterval(
+                EMPTY_NOTIFICATION
+            )
+            else showNotificationDialog()
+        }
+    }
 
+    private fun showNotificationDialog() {
+        viewModelScope.launch(Dispatchers.IO) {
+            navigation.showNotificationDialog()
         }
     }
 }

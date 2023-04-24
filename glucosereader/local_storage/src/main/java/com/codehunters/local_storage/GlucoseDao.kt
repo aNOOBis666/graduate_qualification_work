@@ -6,6 +6,15 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * GlucoseDao is a class that contains database query bodies
+ * @param add - creates new glucose value in table
+ * @param addList - creates list of new glucose values in table
+ * @param deleteById - removes incorrect glucose value from table
+ * @param getAll - gets list of glucose values
+ * @param getById - get concrete glucose value by its id
+ * @param getAllFlow - gets subscription on changing values and returns async list of values
+ */
 @Dao
 interface GlucoseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

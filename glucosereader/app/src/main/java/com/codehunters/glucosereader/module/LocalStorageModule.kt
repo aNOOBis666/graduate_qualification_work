@@ -5,6 +5,8 @@ import androidx.room.Room
 import com.codehunters.local_storage.GlucoseDatabase
 import com.codehunters.local_storage.GlucoseInterface
 import com.codehunters.local_storage.interfaces.IGlucoseInterface
+import com.codehunters.local_storage.interfaces.ISharedPreferencesManager
+import com.codehunters.local_storage.shared_prefs.SharedPreferencesManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,4 +38,9 @@ class LocalStorageModule {
     fun providesGlucoseInterface(
         db: GlucoseDatabase
     ): IGlucoseInterface = GlucoseInterface(db)
+
+    @Singleton
+    @Provides
+    fun providesSharedPrefsManager(@ApplicationContext context: Context): ISharedPreferencesManager =
+        SharedPreferencesManager(context)
 }

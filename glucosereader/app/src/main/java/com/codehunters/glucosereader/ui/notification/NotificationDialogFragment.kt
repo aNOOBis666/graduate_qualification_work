@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.codehunters.glucosereader.R
 import com.codehunters.glucosereader.databinding.DlgNotificationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NotificationDialogFragment : DialogFragment(R.layout.dlg_notification) {
 
     private val viewBinding by viewBinding(DlgNotificationBinding::bind)
