@@ -1,5 +1,5 @@
 ext.versions = [
-        minSdk             : 21,
+        minSdk             : 26,
         compileSdk         : 33,
         targetSdk          : 33,
         buildTools         : '33.0.0',
@@ -58,10 +58,12 @@ ext.libraries = [
         coroutinesCore         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
 
         viewBinding            : "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6",
-        datastorePreferences     : 'androidx.datastore:datastore-preferences:1.0.0',
+        datastorePreferences   : 'androidx.datastore:datastore-preferences:1.0.0',
 
-        roomRuntime              : "androidx.room:room-runtime:$versions.room",
-        roomRxJava2              : "androidx.room:room-rxjava2:$versions.room",
-        roomCompiler             : "androidx.room:room-compiler:$versions.room",
-        roomCoroutines           : "androidx.room:room-ktx:$versions.room",
+        roomRuntime            : "androidx.room:room-runtime:$versions.room",
+        roomRxJava2            : "androidx.room:room-rxjava2:$versions.room",
+        roomCompiler           : "androidx.room:room-compiler:$versions.room",
+        roomCoroutines         : "androidx.room:room-ktx:$versions.room",
+
+        apachePoi              : "org.apache.poi:poi:5.0.0"
 ]

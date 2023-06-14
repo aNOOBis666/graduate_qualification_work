@@ -64,4 +64,6 @@ dependencies {
     implementation libraries.roomRuntime
     kapt libraries.roomCompiler
     implementation libraries.roomCoroutines
+
+    implementation libraries.apachePoi
 }

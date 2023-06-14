@@ -13,4 +13,8 @@
     <string name="dlg_notification_submit">Установить</string>
     <string name="dlg_notification_cancel">Отменить</string>
 
+    <string name="glucose_values">Значения глюкозы</string>
+    <string name="path_choosing_cancelled">Выбор директории отменен</string>
+    <string name="file_correct_operation">Файл успешно сохранен</string>
+    <string name="file_incorrect_operation">Не удалось записать файл, попробуйте позже</string>
 </resources>
