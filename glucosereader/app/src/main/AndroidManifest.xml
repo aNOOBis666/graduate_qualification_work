@@ -38,11 +38,11 @@
         </activity>
 
         <receiver
-            android:name="com.gsgroup.secondscreen.services.reminder.ReminderReceiver"
+            android:name="com.codehunters.glucosereader.ui.notification.reminders.ReminderReceiver"
             android:exported="false" />
 
         <receiver
-            android:name="com.gsgroup.secondscreen.services.BootUpReceiver"
+            android:name="com.codehunters.glucosereader.ui.notification.reminders.BootUpReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

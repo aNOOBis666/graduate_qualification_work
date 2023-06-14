@@ -19,20 +19,20 @@ class ReminderService(
     private var alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     override fun restoreReminders() {
-        scope.launch {
-            restoreRemindersToAlarmManager()
-        }
+//        scope.launch {
+//            restoreRemindersToAlarmManager()
+//        }
     }
 
-    private suspend fun restoreRemindersToAlarmManager() {
-        deleteRemindersFromAlarmManager()
-        resubscribe
-    }
+//    private suspend fun restoreRemindersToAlarmManager() {
+//        deleteRemindersFromAlarmManager()
+//        resubscribe
+//    }
 
-    private suspend fun deleteRemindersFromAlarmManager() {
-        val reminders = notificationsRepository.getAllReminders()
-        for (reminder in reminders) {
-            deleteReminderFromAlarmManager(reminder)
-        }
-    }
+//    private suspend fun deleteRemindersFromAlarmManager() {
+//        val reminders = notificationsRepository.getAllReminders()
+//        for (reminder in reminders) {
+//            deleteReminderFromAlarmManager(reminder)
+//        }
+//    }
 }
