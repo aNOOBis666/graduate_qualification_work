@@ -1,6 +1,7 @@
 # Glucose reader
 
-## Status: `In progress`
+## Status: `Done`
+New features: `Coming soon`
 
 ## Stack:
 ```
