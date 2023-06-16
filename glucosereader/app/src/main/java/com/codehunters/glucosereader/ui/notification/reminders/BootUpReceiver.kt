@@ -8,7 +8,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class BootUpReceiver : BroadcastReceiver() {
 
-    override fun onReceive(context: Context?, intent: Intent?) {
-        TODO("Not yet implemented")
+//    @Inject
+//    private val reminderService: IReminderService
+
+    override fun onReceive(p0: Context?, p1: Intent?) {
+//        reminderService.restoreReminders()
     }
 }
